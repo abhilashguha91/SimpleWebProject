@@ -5,6 +5,15 @@
          metadata-complete="true">
 
  <display-name>Java EE 6 Starter Application</display-name>
+<!-- 
+	The web.xml is the primary file in any JEE web application.
+	Whenever a request comes to the server end of the application, it looks into the URL and finds the pattern
+	It then matches the pattern to the servlet which is mapped via the servlet-mapping tag
+	once it gets which servlet to call, it maps the servlet to the actual java class which is defined by
+	the servlet tag.
+	Thus, there are primarily two main entries in web.xml servlet and servlet-mapping.
+	Post Servlet 3.0 this file is no longer necessary, the servlet mapping can be directly mapped to a class via annotations. Check MyServlet3Class for the same.  
+	-->
 
   <servlet>
 	<servlet-name>myservlet</servlet-name>
@@ -15,4 +24,13 @@
 	<servlet-name>myservlet</servlet-name>
 	<url-pattern>/start</url-pattern>
   </servlet-mapping>
+  
+  <!-- 
+  	As you may have observed there is no mapping to the request /begin(second form) to MyServlet3Class Class in this web.xml file
+  	This is because as we have implemented Servlet3.0 we can map a request direclty to a Class by annotaions.
+  	Run this application and you'll get the error 404 not found to the request, this is because when the web.xml exists it reads Servlets only from
+  	web.xml file, for the Servlet3.0 annotation configurations to run delete the web.xml file completely post you have changed all your mappings to annotation based.
+  	Similarly the filter file is also  
+   -->
+  
 </web-app>
